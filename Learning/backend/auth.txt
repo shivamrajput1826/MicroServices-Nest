@@ -1,0 +1,53 @@
+nest js/common =>contains vast majority of functions, clases that we need from nest
+nest js/platform-express => lets nest js use express js for handling http request
+reflect-metadata=> help in making decorators work
+We write nest js with typescript 
+
+Internally nest js does not handle incoming request, 
+instead we have something inside the nest server.. 
+For http implementation, we use express
+
+In the tsconfig file
+ "module":"commonjs", // used to modularize code and make it compactible with nodejs
+        "target": "es2017", // used to make sure all the features there in the 2017 are accessible 
+
+
+Request,Response Cycle =>
+1)Validate the request  => Pipe  
+2)Make sure the user is authenticated => Guard
+3)Route the request to a particular functions =>Controller
+4)Run some business Logic =>Service
+5)Access a Database..  =>Repository
+
+
+Part of nest
+1)Controllers =>Handle incoming request
+2)Service =>Handles data access and business Logic
+3)Module=> Group data together
+4)Pipes =>Validate Incoming Request
+5)Filters => Handles errors that came during request handling
+6)Guard => Handles Authentication
+7)Interceptors =>Add extra logic to the incoming request/Response
+8)Repository =>Handles data stored in DB..
+
+@Controller("/")
+class AppController {
+  @Get()
+  getRootRoute() {
+    return "hi there";
+  }
+}
+this is used in function routing.. Someone calls one api, controller redirect it to the function 
+which define the function..
+
+@Module({
+    controllers:[AppController] // all the controllers defined will be here, it will create an instance
+})
+class AppController{
+
+}
+
+
+
+
+ 
